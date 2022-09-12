@@ -8,6 +8,7 @@ library(showtext)
 library(paletteer) 
 library(patchwork)
 library(ggpubr)
+library(scales)
 
 
 
@@ -66,7 +67,7 @@ col_text <- "grey20"
 col_num <- "grey55"
 set.seed(872436)           # Set seed
 col_house <- sample(c("#7a293b","#c55069","#522570","#255570","#a3364b","#272976","#5a1e59","#35739e"))
-
+show_col(col_house)
 
 
 # Main plot ----
@@ -79,6 +80,8 @@ p_main <- ggplot(monarchs, aes(y = reorder(Name, Reign_start))) +
                    yend = Name), color = col_text, lineend = "round") + 
   geom_segment(aes(x = age_at_reign, xend = age_reigning + age_at_reign, # Lifespan reigning
                    yend = Name, color = House), size = 2, lineend = "round") + 
+  # Point for Charles III
+  geom_point(aes(x = 26961, y = "Charles III"), color = col_house[6]) +
   # Birth and death annotations
   geom_text(aes(x = -20, label = birth_death), # Year of birth and death
             hjust = 1.1, vjust = 1.5, size = 2.5, family = f_num, 
@@ -192,9 +195,14 @@ p_legend <- ggplot() +
   theme_void()
 
 # Final plot ----
-p_main + inset_element(p_legend, left = -0.029, bottom = 1, right = 0.6, top = 1.1)
+p_final <- p_main + inset_element(p_legend, left = -0.029, bottom = 1, right = 0.6, top = 1.1)
 
-ggsave("British monarchs/british_monarchs.pdf", width = 8, height = 11)
+p_final
+ggsave("British_monarchs/british_monarchs.pdf", width = 8, height = 11, units = "in")
+
+png("British_monarchs/british_monarchs.png", width = 8, height = 11, res = 400, units = "in")
+print(p_final)
+dev.off()
 
 
 
