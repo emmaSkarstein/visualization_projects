@@ -97,13 +97,14 @@ ggplot(loyving, aes(y = reorder(organisasjon, desc(loyving_2023)))) +
   # Title (using geom_richtext to place it inside the plot)
   geom_richtext(aes(x = 8.3*10^6, y = 27), 
                 label = "Tildelinger fra Landbruks- og matdepartementet,<br> <span style = 'color:#a6a6a6;'>2022</span> og <span style = 'color:#595959;'>2023</span>",
-                family = f2, fontface = "bold",
-                size = 10, hjust = 1, label.color = NA, fill = NA) +
+                family = f2, fontface = "bold", 
+                size = 10, hjust = 1, label.color = NA, fill = NA, 
+                data = data.frame()) +
   geom_richtext(
     aes(x = 8.3*10^6, y = 20),
         label = 'Ved publiseringen av statsbudsjettet for 2023 ble det kjent at støtten til organisasjonen<br> **NOAH - for dyrs rettigheter** kuttes helt, mens andre organisasjoner får mindre kutt,<br> og noen fortsatt mottar samme beløp som i 2022.<br><br> Ifølge landbruksdepartementet er formålet med tildelingene dette:<br>"*Bevilgningen skal dekke støtte til organisasjoner på nasjonalt nivå<br> som arbeider innenfor landbruks- og matdepartementets målområde*".<br><br> Her er samtlige organisasjoner som mottar støtte av landbruksdepartementet,<br> og beløpene de har mottatt de siste to årene.',
         family = f1, color = col_text, size = 4, hjust = 1,
-        label.color = NA, fill = NA) +
+        label.color = NA, fill = NA, data = data.frame()) +
   labs(caption = "Kilde: Landbruks- og matdepartementet  |  Grafikk: Emma Skarstein") +
   plot_theme
 
