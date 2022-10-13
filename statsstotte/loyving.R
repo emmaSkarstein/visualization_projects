@@ -60,9 +60,7 @@ plot_theme <- theme(# AXIS TITLES AND TEXT
              plot.background = element_rect(color = col_bgr, fill = col_bgr),
              plot.margin = margin(30, 20, 10, 20),
              plot.caption = element_text(family = f1, color = col_text, 
-                                         hjust = 0.9, margin = margin(t = 20)),
-             plot.title = element_markdown(family = f2, size = 25, 
-                                           hjust = 1, vjust = -2)
+                                         hjust = 1, margin = margin(t = 20))
 )
 
 ggplot(loyving, aes(y = reorder(organisasjon, desc(loyving_2023)))) +
