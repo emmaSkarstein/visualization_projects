@@ -1,10 +1,12 @@
 # Womens voter registers data
-# By Emma Skarstein, January 2023
+# By Emma Skarstein, January-March 2023
 
 library(readxl)
 library(tidyverse)
 
 voters_raw <- read_xlsx("Women_voters/1920-womens-voter-registers-dataset-1-2-6-8-10-11-13.xlsx") 
+# Save as csv for blog:
+write.csv(voters_raw, "Women_voters/womens-voter-registers.csv")
 
 voters <- voters_raw %>% 
   janitor::clean_names()
