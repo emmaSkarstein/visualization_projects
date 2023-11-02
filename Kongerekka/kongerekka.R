@@ -101,8 +101,8 @@ konge_tabell <- konge_tabell %>%
 # PLOTTING ---------------------------------------------------------------------
 
 ## Laste inn fonter ----
-f1 <- "Open sans"
-f2 <- "Playfair Display"
+f1 <- "Manrope" #"Open sans"
+f2 <- "Patrick Hand SC" # Damion, Coming Soon, Homemade Apple, Cedarville Cursive
 f_num <- "PT Serif"
 
 font_add_google(name = f1, family = f1)
@@ -129,17 +129,23 @@ p <- ggplot(konge_tabell, aes(x = tiltradte, y = nummer, group = navn)) +
   geom_text(aes(x = fratradte, label = navn, group = navn), 
             size = 8, family = f1, color = "#191919",
             hjust = 1) +
-  annotate(geom = "text", x = 1700, y = 10, label = "Den norske kongerekka", 
-           family = f2, size = 20) +
+  annotate(geom = "text", x = 1290, y = 23, hjust = 0, 
+           label = "Den norske kongerekka", 
+           family = f2, size = 90) +
+  annotate(geom = "text", x = 1290, y = 18, hjust = 0,
+           label = "Harald Hårfagre til Harald V, ca 865 til 2023", 
+           family = f1, size = 26) +
   scale_x_continuous(breaks = seq(900, 2023, by = 100),
                      limits = c(850, 2024), 
                      expand = c(0,0)) +
   scale_color_manual(values = col_pal) +
+  labs(caption = "Grafikk av Emma Skarstein") +
   theme_minimal() +
-  theme(text = element_text(family = f1, size = 30),
+  theme(text = element_text(family = f1, size = 30, color = "#191919"),
         legend.position = "none",
         axis.title = element_blank(),
         axis.text.y = element_blank(),
+        axis.text.x = element_text(size = 50),
         axis.line.x = element_line(color = col_line),
         plot.background = element_rect(fill = col_bgr, color = col_bgr),
         panel.background = element_rect(fill = col_bgr, color = col_bgr),
