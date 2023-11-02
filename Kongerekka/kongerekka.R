@@ -113,6 +113,8 @@ showtext_auto()
 ## Farger ----
 col_bgr <- "grey95"
 col_line <- "grey85"
+col_pal <- ghibli::ghibli_palette(name = "PonyoMedium")[2:7]
+scales::show_col(col_pal)
 
 ## Lag figur ----
 p <- ggplot(konge_tabell, aes(x = tiltradte, y = nummer, group = navn)) +
@@ -127,9 +129,12 @@ p <- ggplot(konge_tabell, aes(x = tiltradte, y = nummer, group = navn)) +
   geom_text(aes(x = fratradte, label = navn, group = navn), 
             size = 8, family = f1, color = "#191919",
             hjust = 1) +
+  annotate(geom = "text", x = 1700, y = 10, label = "Den norske kongerekka", 
+           family = f2, size = 20) +
   scale_x_continuous(breaks = seq(900, 2023, by = 100),
                      limits = c(850, 2024), 
                      expand = c(0,0)) +
+  scale_color_manual(values = col_pal) +
   theme_minimal() +
   theme(text = element_text(family = f1, size = 30),
         legend.position = "none",
@@ -142,5 +147,7 @@ p <- ggplot(konge_tabell, aes(x = tiltradte, y = nummer, group = navn)) +
         panel.grid.major.y = element_blank(),
         panel.grid.minor.y = element_blank())
 p
+
 ggsave("Kongerekka/kongerekka.png", height = 5, width = 30)
+ggsave("Kongerekka/kongerekka.pdf", height = 5, width = 30)
 
