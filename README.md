@@ -1,6 +1,8 @@
 # Various visualization projects
 
 ---
+**November 2023** | DEN NORSKE KONGEREKKA
+![2022okt](https://github.com/emmaSkarstein/visualization_projects/blob/master/Kongerekka/kongerekka.png)
 
 **Oktober 2022** | TILDELINGER FRA LANDBRUKS- OG MATDEPARTEMENTET
 ![2022okt](https://github.com/emmaSkarstein/visualization_projects/blob/master/statsstotte/loyving.png)
